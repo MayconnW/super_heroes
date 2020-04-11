@@ -1,24 +1,20 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import parse from "html-react-parser";
 
+import { requestData } from "../store/actions";
+
+import Loading from "./Loading";
 import { Container, Header, Body, Pagination } from "./styles";
 
 export default function Table() {
-  const data = [
-    {
-      id: "ads76d8as6d7a",
-      img:
-        "https://cdn3.volusion.com/7aztx.j6veq/v/vspfiles/photos/HT1903-2.jpg",
-      description: "Esse cara é muito bom, vcs tem que ver",
-      name: "Tony Stark",
-    },
-    {
-      id: "ads76d8as6d7b",
-      img:
-        "https://cdn3.volusion.com/7aztx.j6veq/v/vspfiles/photos/HT1903-2.jpg",
-      description: "Esse cara é muito bom, vcs tem que ver",
-      name: "Tony Stark",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { data, pagination, loading } = useSelector(({ home }) => home);
+
+  const handleSelectPage = page => {
+    dispatch(requestData(page));
+  };
+
   return (
     <Container>
       <Header>
@@ -26,18 +22,27 @@ export default function Table() {
         <div>Descrição</div>
       </Header>
 
-      {data.map(item => (
-        <Body key={item.id}>
-          <div>
-            <img src={item.img} alt={item.name} />
-            <h3>{item.name}</h3>
-          </div>
-          <div>
-            <span>{item.description}</span>
-          </div>
-        </Body>
-      ))}
-      <Pagination pageCount={6} onPageChange={() => {}} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {data.map(item => (
+            <Body key={`character-${item.id}`}>
+              <div>
+                <img src={item.image} alt={item.name} />
+                <h3>{item.name}</h3>
+              </div>
+              <div>
+                <span>{parse(item.description)}</span>
+              </div>
+            </Body>
+          ))}
+        </>
+      )}
+      <Pagination
+        pageCount={pagination.pages}
+        onPageChange={({ selected }) => handleSelectPage(selected + 1)}
+      />
     </Container>
   );
 }

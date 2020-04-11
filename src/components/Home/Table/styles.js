@@ -42,12 +42,17 @@ export const Body = styled(Box)`
       color: ${secondary};
       font-size: 21px;
       line-height: 1.1;
+      margin-left: 25px;
     }
-    span {
+    > span {
       color: ${secondary};
       font-size: 21px;
       line-height: 1.1;
       margin-left: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     img {
       border-radius: 50%;
@@ -64,4 +69,17 @@ export const Pagination = styled(DefaultPagination)`
   display: flex;
   justify-content: center;
   margin: 16px;
+`;
+
+export const SingleLineWrapper = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #707070;
+  height: 50px;
+
+  > div,
+  > svg {
+    margin-right: 10px;
+  }
 `;
