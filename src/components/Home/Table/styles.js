@@ -6,12 +6,18 @@ export const Container = styled.div`
   margin: 34px 42px 0 42px;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 720px) {
+    margin: 12px 0 0 0;
+  }
 `;
 
 const Box = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-column-gap: 10px;
+  @media only screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Header = styled(Box)`
@@ -25,6 +31,12 @@ export const Header = styled(Box)`
     padding-left: 12px;
     line-height: 1.2;
     height: 37px;
+    @media only screen and (max-width: 720px) {
+      padding-left: 98px;
+      & + div {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -61,6 +73,14 @@ export const Body = styled(Box)`
       object-fit: cover;
     }
   }
+  @media only screen and (max-width: 720px) {
+    padding: 18px 12px;
+    div {
+      & + div {
+        display: none;
+      }
+    }
+  }
   will-change: background;
 `;
 
@@ -68,7 +88,10 @@ export const Pagination = styled(DefaultPagination)`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 16px;
+
+  @media only screen and (max-width: 720px) {
+    margin: 18px 0 24px 0;
+  }
 `;
 
 export const SingleLineWrapper = styled.span`

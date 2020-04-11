@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
     justify-content: flex-end;
     color: #707070;
     font-size: 0.9em;
-    padding-right: 80px;
 
     li {
       display: flex;
@@ -59,6 +58,17 @@ export const Wrapper = styled.div`
       color: ${tertiary};
       a {
         color: ${tertiary};
+      }
+    }
+  }
+  @media only screen and (max-width: 720px) {
+    .pagination {
+      li {
+        a {
+          font-size: 16px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
       }
     }
   }

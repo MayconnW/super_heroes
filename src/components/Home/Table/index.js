@@ -10,6 +10,7 @@ import { Container, Header, Body, Pagination } from "./styles";
 export default function Table() {
   const dispatch = useDispatch();
   const { data, pagination, loading } = useSelector(({ home }) => home);
+  const { isMobile } = useSelector(({ resolution }) => resolution);
 
   const handleSelectPage = page => {
     dispatch(requestData(page));
@@ -18,7 +19,7 @@ export default function Table() {
   return (
     <Container>
       <Header>
-        <div>Personagem</div>
+        <div>{isMobile ? "Nome" : "Personagem"}</div>
         <div>Descrição</div>
       </Header>
 

@@ -7,7 +7,10 @@ export default function Header() {
     <Container>
       <div>
         <h3>
-          <strong>Bus</strong>ca Marvel
+          <strong>
+            <strong>Bus</strong>ca
+          </strong>{" "}
+          Marvel
         </h3>
         <span> teste front-end</span>
       </div>

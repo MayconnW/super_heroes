@@ -18,7 +18,7 @@ export const Container = styled.div`
     font-size: 27px;
     font-weight: 900;
     line-height: 1.2;
-    strong {
+    > strong > strong {
       border-bottom: 4px solid ${primary};
     }
   }
@@ -27,5 +27,21 @@ export const Container = styled.div`
     font-size: 27px;
     font-weight: 300;
     line-height: 1.2;
+  }
+
+  @media only screen and (max-width: 720px) {
+    margin-top: 12px;
+    h3 {
+      font-size: 16px;
+      > strong {
+        border-bottom: 4px solid ${primary};
+      }
+    }
+    span {
+      font-size: 16px;
+    }
+    > span {
+      display: none;
+    }
   }
 `;

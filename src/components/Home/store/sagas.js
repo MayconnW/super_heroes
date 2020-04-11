@@ -5,31 +5,38 @@ import { LIMIT, PAGINATION } from "./consts";
 import { setData } from "./actions";
 import build from "./buildListFromRequest";
 
-async function getData({ page = 1 }) {
+async function getData({ page = 1, filter = "" }) {
   const pagination = PAGINATION;
 
   pagination.page = page;
 
   try {
     const offset = (page - 1) * LIMIT;
+
+    let url = `edge/characters?page[offset]=${offset}&page[limit]=${LIMIT}`;
+    if (filter) {
+      url += `&filter[slug]=${filter
+        .toLowerCase()
+        .split(" ")
+        .join("-")}`;
+    }
+
     const {
       data: { data, meta },
-    } = await api.get(
-      `edge/characters?page[offset]=${offset}&page[limit]=${LIMIT}`
-    );
+    } = await api.get(url);
 
     pagination.pages = Math.ceil(meta.count / LIMIT);
 
     return { data: build(data), pagination };
   } catch (e) {
-    console.log(e);
     return { data: [], pagination };
   }
 }
 
 function* getDataRequest({ payload }) {
   const { page } = payload;
-  const { data, pagination } = yield call(getData, { page });
+  const { filter } = yield select(({ home }) => home);
+  const { data, pagination } = yield call(getData, { page, filter });
   yield put(setData({ data, pagination }));
 }
 
