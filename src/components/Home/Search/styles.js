@@ -17,4 +17,11 @@ export const Container = styled.div`
     border: 1px solid #a5a5a5;
     padding-left: 10px;
   }
+
+  @media only screen and (max-width: 720px) {
+    margin-top: 12px;
+    input {
+      width: 100%;
+    }
+  }
 `;

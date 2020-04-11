@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setFilter } from "../store/actions";
+import { setFilter, requestData } from "../store/actions";
 import { Container } from "./styles";
 
 export default function Search() {
   const dispatch = useDispatch();
   const { filter } = useSelector(({ home }) => home);
+
+  const timeout = useRef({ current: 0 });
+
+  useEffect(() => {
+    function filterData() {
+      dispatch(requestData(1));
+    }
+
+    timeout.current = setTimeout(() => {
+      filterData();
+    }, 500);
+
+    return () => clearTimeout(timeout.current);
+  }, [filter]);
 
   return (
     <Container>
