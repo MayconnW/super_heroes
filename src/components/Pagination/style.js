@@ -16,11 +16,13 @@ export const Wrapper = styled.div`
       justify-content: center;
       cursor: pointer;
       margin: 5px;
-      width: 32px;
+      /*width: 32px;*/
       height: 32px;
-      border-radius: 50%;
+      border-radius: 5px;
 
       a {
+        padding-left: 10px;
+        padding-right: 10px;
         display: flex;
         align-items: center;
         width: 100%;

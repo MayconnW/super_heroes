@@ -13,7 +13,7 @@ function Pagination({ pageCount, onPageChange, className }) {
         pageCount={pageCount}
         onPageChange={onPageChange}
         pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
+        marginPagesDisplayed={1}
         previousLabel={<ChevronLeftRoundedIcon />}
         nextLabel={<ChevronRightRoundedIcon />}
         containerClassName="pagination"
