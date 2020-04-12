@@ -25,7 +25,7 @@ export const Header = styled.div`
   width: 100%;
   height: 300px;
 
-  > svg {
+  a > svg {
     cursor: pointer;
 
     &:hover {

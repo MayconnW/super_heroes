@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Tab, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import parse from "html-react-parser";
+import { Link } from "react-router-dom";
 
 import Media from "./Media";
 import {
@@ -20,7 +22,9 @@ export default function Character({ data }) {
   return (
     <Container>
       <Header>
-        <BackIcon />
+        <Link to="/">
+          <BackIcon />
+        </Link>
       </Header>
       <Content>
         <Card>
@@ -39,7 +43,7 @@ export default function Character({ data }) {
 
             <TabPanel>
               <h3>{data.name}</h3>
-              <span>{data.description}</span>
+              <span>{data.description && parse(data.description)}</span>
             </TabPanel>
             <TabPanel>
               <Media media={data.media} />
@@ -53,6 +57,7 @@ export default function Character({ data }) {
 
 Character.defaultProps = {
   data: {
+    id: -1,
     img: "",
     description: "",
     name: "",
@@ -62,12 +67,13 @@ Character.defaultProps = {
 
 Character.propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.number,
     img: PropTypes.string,
     description: PropTypes.string,
     name: PropTypes.string,
     media: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         title: PropTypes.string,
         img: PropTypes.string,
         description: PropTypes.string,

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import parse from "html-react-parser";
 
 import {
   Container,
@@ -42,7 +43,11 @@ export default function Media({ media }) {
         <h3>{selectedMedia.title}</h3>
         <img src={selectedMedia.img} alt="" />
         <Badges>Ranking favoritado Usuarios</Badges>
-        <Description>{selectedMedia.description}</Description>
+        <Description>
+          {selectedMedia.description
+            ? parse(selectedMedia.description)
+            : "Sem Descrição"}
+        </Description>
       </Content>
       <RightArrow
         onClick={handleRightClick}
@@ -59,7 +64,7 @@ Media.defaultProps = {
 Media.propTypes = {
   media: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       title: PropTypes.string,
       img: PropTypes.string,
       description: PropTypes.string,

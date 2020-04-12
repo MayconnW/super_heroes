@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
+import history from "services/history";
 
 import { requestData } from "../store/actions";
 
@@ -16,6 +17,10 @@ export default function Table() {
     dispatch(requestData(page));
   };
 
+  const handleTableClick = id => {
+    history.push(`/character/${id}`);
+  };
+
   return (
     <Container>
       <Header>
@@ -28,7 +33,10 @@ export default function Table() {
       ) : (
         <>
           {data.map(item => (
-            <Body key={`character-${item.id}`}>
+            <Body
+              key={`character-${item.id}`}
+              onClick={() => handleTableClick(item.id)}
+            >
               <div>
                 <img src={item.image} alt={item.name} />
                 <h3>{item.name}</h3>
