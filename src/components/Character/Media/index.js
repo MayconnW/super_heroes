@@ -37,14 +37,17 @@ export default function Media({ media }) {
 
   return (
     <Container>
-      <LeftArrow onClick={handleLeftClick} />
+      <LeftArrow onClick={handleLeftClick} inactive={selectedIndex <= 0} />
       <Content>
         <h3>{selectedMedia.title}</h3>
         <img src={selectedMedia.img} alt="" />
         <Badges>Ranking favoritado Usuarios</Badges>
         <Description>{selectedMedia.description}</Description>
       </Content>
-      <RightArrow onClick={handleRightClick} />
+      <RightArrow
+        onClick={handleRightClick}
+        inactive={selectedIndex >= media.length - 1}
+      />
     </Container>
   );
 }

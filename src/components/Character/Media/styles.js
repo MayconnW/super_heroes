@@ -6,10 +6,10 @@ import { ChevronLeftRounded, ChevronRightRounded } from "@material-ui/icons";
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
 
   .left {
     cursor: pointer;
+    margin-top: 165px;
 
     &:hover {
       animation: 150ms ease 0s infinite alternate none running pulseLeft;
@@ -18,9 +18,18 @@ export const Container = styled.div`
 
   .right {
     cursor: pointer;
+    margin-top: 165px;
 
     &:hover {
       animation: 150ms ease 0s infinite alternate none running pulseRight;
+    }
+  }
+
+  .inactive {
+    cursor: not-allowed;
+    opacity: 0.8;
+    &:hover {
+      animation: none;
     }
   }
 
@@ -43,18 +52,18 @@ export const Container = styled.div`
   }
 `;
 
-export const LeftArrow = styled(({ ...rest }) => (
+export const LeftArrow = styled(({ inactive, ...rest }) => (
   <ChevronLeftRounded
     {...rest}
-    className="left"
+    className={inactive ? "left inactive" : "left"}
     style={{ color: primary, fontSize: 60 }}
   />
 ))``;
 
-export const RightArrow = styled(({ ...rest }) => (
+export const RightArrow = styled(({ inactive, ...rest }) => (
   <ChevronRightRounded
     {...rest}
-    className="right"
+    className={inactive ? "right inactive" : "right"}
     style={{ color: primary, fontSize: 60 }}
   />
 ))``;
@@ -62,6 +71,10 @@ export const RightArrow = styled(({ ...rest }) => (
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  img {
+    width: 100%;
+    height: 300px;
+  }
 `;
 
 export const Badges = styled.div`
