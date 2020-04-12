@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { primary } from "styles/colors";
 import { ChevronLeftRounded, ChevronRightRounded } from "@material-ui/icons";
+import DefaultTooltip from "@material-ui/core/Tooltip";
 
 export const Container = styled.div`
   display: flex;
@@ -75,12 +76,29 @@ export const Content = styled.div`
     width: 100%;
     height: 300px;
   }
+  @media only screen and (max-width: 720px) {
+    img {
+    }
+  }
 `;
 
 export const Badges = styled.div`
   display: flex;
+  @media only screen and (max-width: 720px) {
+    > button {
+      padding: 8px;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      &:last-child {
+        display: none;
+      }
+    }
+  }
 `;
 
 export const Description = styled.div`
   display: flex;
 `;
+
+export const Tooltip = styled(DefaultTooltip)``;

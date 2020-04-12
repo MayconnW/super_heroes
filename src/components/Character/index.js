@@ -16,6 +16,7 @@ import {
   BackIcon,
   TabList,
   TabPanel,
+  Description,
 } from "./styles";
 
 export default function Character({ data }) {
@@ -42,8 +43,10 @@ export default function Character({ data }) {
             </TabList>
 
             <TabPanel>
-              <h3>{data.name}</h3>
-              <span>{data.description && parse(data.description)}</span>
+              <Description>
+                <h3>{data.name}</h3>
+                <span>{data.description && parse(data.description)}</span>
+              </Description>
             </TabPanel>
             <TabPanel>
               <Media media={data.media} />

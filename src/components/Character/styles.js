@@ -33,6 +33,10 @@ export const Header = styled.div`
     }
   }
 
+  @media only screen and (max-width: 720px) {
+    height: 250px;
+  }
+
   @keyframes moveLeft {
     0% {
       transform: translate(0);
@@ -60,6 +64,10 @@ export const MiniCard = styled.div`
     font-size: 18px;
     padding-left: 12px;
   }
+  @media only screen and (max-width: 720px) {
+    min-width: 260px;
+    transform: translateX(30px);
+  }
 `;
 
 export const Card = styled.div`
@@ -70,6 +78,11 @@ export const Card = styled.div`
     width: 190px;
     height: 270px;
     object-fit: cover;
+  }
+  @media only screen and (max-width: 720px) {
+    > img {
+      display: none;
+    }
   }
 `;
 
@@ -93,6 +106,9 @@ export const Details = styled.div`
     font-size: 16px;
     color: ${secondary};
   }
+  @media only screen and (max-width: 720px) {
+    padding: 15px 0;
+  }
 `;
 
 export const TabList = styled(DefaultTabList)`
@@ -113,6 +129,10 @@ export const TabList = styled(DefaultTabList)`
     &:hover {
       height: 43px;
     }
+    @media only screen and (max-width: 720px) {
+      width: 100%;
+      justify-content: center;
+    }
   }
   .react-tabs__tab--selected {
     color: ${secondary};
@@ -125,4 +145,10 @@ export const TabList = styled(DefaultTabList)`
 
 export const TabPanel = styled(DefaultTabPanel)`
   padding-top: 20px;
+`;
+
+export const Description = styled.div`
+  @media only screen and (max-width: 720px) {
+    padding: 10px;
+  }
 `;

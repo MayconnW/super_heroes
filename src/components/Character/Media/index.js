@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import parse from "html-react-parser";
 
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import GradeIcon from "@material-ui/icons/Grade";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import { IconButton } from "@material-ui/core";
+
 import {
   Container,
   LeftArrow,
@@ -9,6 +15,7 @@ import {
   Content,
   Badges,
   Description,
+  Tooltip,
 } from "./styles";
 
 export default function Media({ media }) {
@@ -42,7 +49,26 @@ export default function Media({ media }) {
       <Content>
         <h3>{selectedMedia.title}</h3>
         <img src={selectedMedia.img} alt="" />
-        <Badges>Ranking favoritado Usuarios</Badges>
+        <Badges>
+          <Tooltip title="Visualizações">
+            <IconButton>
+              <VisibilityIcon />
+              {selectedMedia.views}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Favoritos">
+            <IconButton>
+              <FavoriteIcon />
+              {selectedMedia.favorites}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Nota">
+            <IconButton>
+              <GradeIcon />
+              {selectedMedia.averageRating}
+            </IconButton>
+          </Tooltip>
+        </Badges>
         <Description>
           {selectedMedia.description
             ? parse(selectedMedia.description)
