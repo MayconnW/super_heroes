@@ -10,7 +10,7 @@ export default function Header() {
           <strong>
             <strong>Bus</strong>ca
           </strong>{" "}
-          Marvel
+          Kitsu
         </h3>
         <span> teste front-end</span>
       </div>
