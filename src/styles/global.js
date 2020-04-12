@@ -19,6 +19,9 @@ const Global = createGlobalStyle`
     flex: 1;
     display: flex;
     flex-direction: column;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   html {
